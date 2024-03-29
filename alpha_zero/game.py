@@ -24,7 +24,7 @@ class Game:
         """返回下一个状态和棋手"""
         pass
 
-    def get_valid_moves(self, board: Board, player: int):
+    def get_valid_actions(self, board: Board, player: int):
         """返回合法走法"""
         pass
 
@@ -32,7 +32,7 @@ class Game:
         """返回游戏是否结束, 0: 游戏未结束, 1: player, -1: player失败"""
         pass
 
-    def get_canonical_form(self, board: Board, player: int) -> Board:
+    def get_canonical_board(self, board: Board, player: int) -> Board:
         """返回规范形式"""
         pass
 

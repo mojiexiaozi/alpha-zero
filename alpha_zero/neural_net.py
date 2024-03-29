@@ -1,5 +1,3 @@
-from typing import Tuple
-
 from alpha_zero.board import Board
 
 
@@ -13,8 +11,8 @@ class NeuralNet:
     def predict(self, board: Board):
         pass
 
-    def save_checkpoint(self, path) -> None:
+    def backup(self) -> None:
         pass
 
-    def load_checkpoint(self, path) -> None:
+    def load_from_net(self, net) -> None:
         pass

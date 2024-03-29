@@ -18,8 +18,3 @@ class AverageMeter(object):
 
     def __repr__(self):
         return f"{self.avg:.2e}"
-
-
-class dotdict(dict):
-    def __getattr__(self, name):
-        return self[name]
