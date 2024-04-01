@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Board:
     def __init__(self) -> None:
         pass
@@ -10,6 +13,10 @@ class Board:
         """是否还有合法的走法"""
         pass
 
-    def execute_move(self, move, player: int):
+    def execute_move(self, move, color: int):
         """执行走法"""
+        pass
+
+    def get_pieces(self) -> np.ndarray:
+        """返回棋盘"""
         pass

@@ -4,6 +4,7 @@ import numpy as np
 
 from alpha_zero.game import Game
 from alpha_zero.neural_net import NeuralNet
+from alpha_zero.utils import Config
 
 EPS = 1e-8
 
@@ -11,7 +12,7 @@ LOGGER = logging.getLogger(__name__)
 
 
 class MCTS:
-    def __init__(self, game: Game, net: NeuralNet, args):
+    def __init__(self, game: Game, net: NeuralNet, args=Config()):
         self.game = game
         self.net = net
         self.args = args

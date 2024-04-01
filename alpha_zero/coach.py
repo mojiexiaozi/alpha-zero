@@ -5,10 +5,12 @@ from collections import deque
 from alpha_zero.game import Game
 from alpha_zero.neural_net import NeuralNet
 from alpha_zero.mcts import MCTS
+from alpha_zero.arena import Arena
+from alpha_zero.utils import Config
 
 
 class Coach:
-    def __init__(self, game: Game, net: NeuralNet, args) -> None:
+    def __init__(self, game: Game, net: NeuralNet, args=Config()) -> None:
         self.game = game
         self.net = net
         self.competitor_net = self.net.__class__(self.game)  # 竞争对手net
@@ -66,13 +68,28 @@ class Coach:
 
             self.net.backup()
             self.competitor_net.load_from_net(self.net)
+
             competitor_mcts = MCTS(self.game, self.competitor_net, self.args)
 
             self.net.train(train_examples)
             mcts = MCTS(self.game, self.net, self.args)
 
             print("PITTING AGAINST PREVIOUS VERSION")
-            
+            arena = Arena(
+                lambda x: np.argmax(competitor_mcts.get_action_prob(x, temp=0)),
+                lambda x: np.argmax(mcts.get_action_prob(x, temp=0)),
+                self.game,
+            )
+            competitor_wins, wins, draws = arena.play_games(self.args.arena_compare)
+            print(f"New/Competitor/Draws: {wins}/{competitor_wins}/{draws}")
+            if (
+                competitor_wins + wins == 0
+                or wins / (competitor_wins + wins) < self.args.update_threshold
+            ):
+                print("REJECTING NEW MODEL")
+                self.net.restore()
+            else:
+                print("ACCEPTING NEW MODEL")
 
     def save_train_examples(self, iter):
         examples = []
