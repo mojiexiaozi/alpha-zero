@@ -44,7 +44,7 @@ class GobangNet(nn.Module):
             nn.ReLU(),
             nn.Dropout(dropout),
         )
-        self.pi = nn.Sequential(nn.Linear(512, self.action_size), nn.Softmax(dim=1))
+        self.pi = nn.Sequential(nn.Linear(512, self.action_size), nn.LogSoftmax(dim=1))
         self.v = nn.Sequential(nn.Linear(512, 1), nn.Tanh())
 
     def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:

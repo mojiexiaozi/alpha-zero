@@ -2,7 +2,7 @@ import logging
 import math
 import numpy as np
 
-from alpha_zero.game import Game
+from alpha_zero.env.game import Game
 from alpha_zero.neural_net import NeuralNet
 from alpha_zero.utils import Config
 

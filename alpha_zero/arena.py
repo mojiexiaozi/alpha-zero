@@ -1,6 +1,6 @@
 from tqdm import tqdm
 
-from alpha_zero.game import Game
+from alpha_zero.env.game import Game
 
 
 class Arena:

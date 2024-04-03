@@ -2,7 +2,7 @@ from tqdm import tqdm
 import numpy as np
 from collections import deque
 
-from alpha_zero.game import Game
+from alpha_zero.env.game import Game
 from alpha_zero.neural_net import NeuralNet
 from alpha_zero.mcts import MCTS
 from alpha_zero.arena import Arena

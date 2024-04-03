@@ -2,7 +2,7 @@ from typing import Tuple
 from copy import deepcopy
 import numpy as np
 
-from alpha_zero.game import Game
+from alpha_zero.env.game import Game
 from alpha_zero.gobang.board import GobangBoard
 
 
@@ -150,6 +150,8 @@ if __name__ == "__main__":
     game.display(board)
     print(game.string_representation(board))
     print(game.get_game_ended(board, 1))
+    print(board.get_legal_moves())
+    print(game.get_valid_actions(board, 1))
 
     # print(game.get_valid_actions(board, 1))
     # print(game.get_action_size())

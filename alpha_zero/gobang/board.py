@@ -1,6 +1,6 @@
 import numpy as np
 
-from alpha_zero.board import Board
+from alpha_zero.env.board import Board
 
 
 class GobangBoard(Board):

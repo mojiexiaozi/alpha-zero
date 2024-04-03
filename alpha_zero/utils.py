@@ -1,4 +1,11 @@
 from dataclasses import dataclass
+import logging
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(funcName)s:line %(lineno)d: %(message)s",
+)
+LOGGER = logging.getLogger(__name__)
 
 
 class AverageMeter(object):
@@ -38,3 +45,10 @@ class Config:
     load_model: bool = False
     load_folder_file: str = "./checkpoint"
     num_iters_for_training: int = 20
+
+
+if __name__ == "__main__":
+    LOGGER.info("Hello, World!")
+    LOGGER.debug("Hello, World!")
+    LOGGER.error("Hello, World!")
+    LOGGER.warning("Hello, World!")
